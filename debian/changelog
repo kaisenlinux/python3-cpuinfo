@@ -1,0 +1,67 @@
+python-cpuinfo (7.0.0-1kaisen1) kaisen-packages; urgency=medium
+
+  * Upgrade at 7.0
+
+ -- Kevin Chevreuil - Kaisen <kaisen@kaisen-linux.org>  Sun, 04 Oct 2019 04:19:51 +0200
+
+python-cpuinfo (5.0.0-2) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * Bump Standards-Version to 4.4.1.
+
+  [ Sandro Tosi ]
+  * Drop python2 support; Closes: #937667
+
+ -- Sandro Tosi <morph@debian.org>  Tue, 26 Nov 2019 19:22:31 -0500
+
+python-cpuinfo (5.0.0-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/control: Remove ancient X-Python-Version field
+  * d/control: Remove ancient X-Python3-Version field
+  * Use debhelper-compat instead of debian/compat.
+
+  [ Hugo Lefeuvre ]
+  * New upstream release.
+  * Bump manpage years.
+  * debian/control:
+    - Bump Standards-Version to 4.4.0.
+  * debian/copyright:
+    - Update copyright years.
+
+ -- Hugo Lefeuvre <hle@debian.org>  Sat, 20 Jul 2019 20:55:17 -0300
+
+python-cpuinfo (4.0.0-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * d/control: Set Vcs-* to salsa.debian.org
+
+  [ Hugo Lefeuvre ]
+  * New upstream release.
+  * Bump compat to 11.
+  * Bump debian/watch to version 4.
+  * Bump manpage years.
+  * debian/control:
+    - Bump Standards-Version to 4.1.4.
+    - Update debhelper dependency to >= 11.
+    - Add autopkgtest stanza.
+    - Longer binary package descriptions.
+  * debian/copyright:
+    - Update copyright years.
+
+ -- Hugo Lefeuvre <hle@debian.org>  Tue, 17 Apr 2018 23:16:46 -0400
+
+python-cpuinfo (3.3.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Upload to unstable.
+  * Bump Standards-Version to 4.1.0.
+  * Fix section of binary package py-cpuinfo.
+
+ -- Hugo Lefeuvre <hle@debian.org>  Sun, 24 Sep 2017 23:42:41 +0200
+
+python-cpuinfo (3.0.0-1) experimental; urgency=low
+
+  * Initial release (Closes: #860182)
+
+ -- Hugo Lefeuvre <hle@debian.org>  Thu, 13 Apr 2017 10:36:52 +0200

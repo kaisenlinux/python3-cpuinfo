@@ -1,0 +1,41 @@
+Source: python-cpuinfo
+Section: python
+Priority: optional
+XSBC-Original-Maintainer: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+Maintainer: Kevin Chevreuil - Kaisen <kaisen@kaisen-linux.org>
+Build-Depends: debhelper,
+               dh-python,
+               python3-all,
+               python3-setuptools
+Standards-Version: 4.5.0
+Homepage: https://github.com/workhorsy/py-cpuinfo
+Testsuite: autopkgtest-pkg-python
+Vcs-Git: https://gitlab.com/kaisenlinux/packages/python-cpuinfo.git
+Vcs-Browser: https://gitlab.com/kaisenlinux/packages/python-cpuinfo
+
+Package: python3-cpuinfo
+Architecture: all
+Depends: ${misc:Depends},
+         ${python3:Depends}
+Description: Python module for getting CPU info (Python 3)
+ The cpuinfo Python module provides pure Python tools for getting CPU infos.
+ .
+ py-cpuinfo works without any extra programs or libraries beyond what the
+ OS provides. For instance - on Linux based systems - python-cpuinfo retrieves
+ information from various sources, including but not restricted to:
+ /proc/cpuinfo, dmesg, lscpu, device-tree ibm features flags, etc.
+ .
+ This package installs the library for Python 3.
+
+Package: py-cpuinfo
+Architecture: all
+Section: admin
+Depends: python3-cpuinfo,
+         ${misc:Depends},
+         ${python3:Depends}
+Description: Python script for getting CPU info
+ The py-cpuinfo Python module provides pure Python tools for getting CPU infos,
+ without any need of dependencies or extra programs beyond what the OS provides.
+ .
+ This package installs the command line tool for getting CPU info based on the
+ py-cpuinfo Python module.
