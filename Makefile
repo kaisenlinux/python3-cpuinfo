@@ -1,5 +1,5 @@
 
-VERSION = 7.0.0
+VERSION = 8.0.0
 
 all:
 	@echo build: Builds the python source dist package
@@ -20,7 +20,7 @@ clean:
 	rm -f -rf py-cpuinfo-$(VERSION).zip
 
 build: clean
-	python setup.py sdist --formats=gztar,zip
+	python3 setup.py sdist --formats=gztar,zip
 	mv dist/py-cpuinfo-$(VERSION).tar.gz py-cpuinfo-$(VERSION).tar.gz
 	mv dist/py-cpuinfo-$(VERSION).zip py-cpuinfo-$(VERSION).zip
 	rm -f -rf py_cpuinfo.egg-info
@@ -36,23 +36,23 @@ release:
 	git push --tags
 
 upload: clean
-	python setup.py sdist --formats=gztar,zip
+	python3 setup.py sdist --formats=gztar,zip
 	twine upload dist/py-cpuinfo-$(VERSION).tar.gz
 
 install: remove
 	tar xzf py-cpuinfo-$(VERSION).tar.gz
-	cd py-cpuinfo-$(VERSION)/ && python setup.py install
+	cd py-cpuinfo-$(VERSION)/ && python3 setup.py install
 	rm -f -rf py-cpuinfo-$(VERSION)
 
-	@echo now try "import cpuinfo"
-	@echo "cpuinfo.get_cpu_info()"
+	@echo now try "from cpuinfo import get_cpu_info"
+	@echo "get_cpu_info()"
 
 remove:
 	rm -f -rf /usr/local/lib/python2.7/dist-packages/py_cpuinfo-$(VERSION)-py2.7.egg
 	rm -f /usr/local/bin/cpuinfo
 
 test:
-	python setup.py test
+	python3 setup.py test
 
 rst:
 	rm -f -rf README.rst

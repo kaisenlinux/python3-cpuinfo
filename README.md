@@ -15,10 +15,11 @@ and 3.
 Example
 -----
 ~~~python
-from cpuinfo import get_cpu_info
+if __name__ == '__main__':
+    from cpuinfo import get_cpu_info
 
-for key, value in get_cpu_info().items():
-    print("{0}: {1}".format(key, value))
+    for key, value in get_cpu_info().items():
+        print("{0}: {1}".format(key, value))
 ~~~
 
 
@@ -50,7 +51,7 @@ Fields
 | "hz_actual_friendly"          | "1.7330 GHz"              | string                |
 | "hz_advertised"               | (2930000000, 0)           | (int, int)            |
 | "hz_actual"                   | (1733000000, 0)           | (int, int)            |
-| "arch"                        | "X86_64"                  | "X86_32", "X86_64", "ARM_8", "ARM_7", "PPC_32", "PPC_64", "SPARC_32", "SPARC_64", "S390X" |
+| "arch"                        | "X86_64"                  | "X86_32", "X86_64", "ARM_8", "ARM_7", "PPC_32", "PPC_64", "SPARC_32", "SPARC_64", "S390X", "MIPS_32", "MIPS_64" |
 | "bits"                        | 64                        | int                   |
 | "count"                       | 4                         | int                   |
 | "l1_data_cache_size"          | 32768                     | int                   |
@@ -98,8 +99,8 @@ Run as a library
 -----
 ~~~python
 if __name__ == '__main__':
-    import cpuinfo
-    info = cpuinfo.get_cpu_info()
+    from cpuinfo import get_cpu_info
+    info = get_cpu_info()
     print(info)
 ~~~
 
@@ -108,12 +109,12 @@ Run under Pyinstaller
 ~~~python
 # NOTE: Pyinstaller may spawn infinite processes if __main__ is not used
 if __name__ == '__main__':
-    import cpuinfo
+    from cpuinfo import get_cpu_info
     from multiprocessing import freeze_support
 
     # NOTE: Pyinstaller also requires freeze_support
     freeze_support()
-    info = cpuinfo.get_cpu_info()
+    info = get_cpu_info()
     print(info)
 ~~~
 
@@ -130,6 +131,7 @@ Command Line Arguments
 --help: show this help message and exit
 --json: Return the info in JSON format
 --version: Return the version of py-cpuinfo
+--trace: Traces code paths used to find CPU info to file
 ~~~
 
 
@@ -150,7 +152,7 @@ OS Support
 CPU Support
 -----
 * X86 32bit and 64bit
-* Some ARM, PPC and S390X CPUs
+* Some ARM, PPC, S390X and MIPS CPUs
 
 
 These approaches are used for getting info:
@@ -166,6 +168,14 @@ These approaches are used for getting info:
 9. sysinfo (Haiku)
 10. device-tree ibm features flags (Linux PPC)
 11. Querying the CPUID register (Intel X86 CPUs)
+
+
+Run Test Suite
+-----
+
+~~~bash
+python test_suite.py
+~~~
 
 
 Bugs and Corrections
