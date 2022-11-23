@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 
-export PYBUILD_NAME=cpuinfo
+export PYBUILD_NAME=py-cpuinfo
 
 %:
 	dh $@ --with python3 --buildsystem=pybuild

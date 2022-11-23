@@ -8,8 +8,7 @@ py-cpuinfo
 
 Py-cpuinfo gets CPU info with pure Python. Py-cpuinfo should work without any
 extra programs or libraries, beyond what your OS provides. It does not require
-any compilation(C/C++, assembly, et cetera) to use. It works with Python 2
-and 3.
+any compilation(C/C++, assembly, et cetera) to use. It works with Python 3.
 
 
 Example
@@ -44,14 +43,14 @@ Fields
 -----
 | key                           | Example value             | Return Format         |
 | :---------------------------- | :------------------------ | :-------------------- |
-| "python_version"              | "2.7.12.final.0 (64 bit)" | string                |
-| "cpuinfo_version"             | (4, 0, 0)                 | (int, int, int)       |
-| "cpuinfo_version_string"      | "4.0.0"                   | string                |
+| "python_version"              | "3.10.4.final.0 (64 bit)" | string                |
+| "cpuinfo_version"             | (8, 0, 0)                 | (int, int, int)       |
+| "cpuinfo_version_string"      | "8.0.0"                   | string                |
 | "hz_advertised_friendly"      | "2.9300 GHz"              | string                |
 | "hz_actual_friendly"          | "1.7330 GHz"              | string                |
 | "hz_advertised"               | (2930000000, 0)           | (int, int)            |
 | "hz_actual"                   | (1733000000, 0)           | (int, int)            |
-| "arch"                        | "X86_64"                  | "X86_32", "X86_64", "ARM_8", "ARM_7", "PPC_32", "PPC_64", "SPARC_32", "SPARC_64", "S390X", "MIPS_32", "MIPS_64" |
+| "arch"                        | "X86_64"                  | "X86_32", "X86_64", "ARM_8", "ARM_7", "PPC_32", "PPC_64", "SPARC_32", "SPARC_64", "S390X", "MIPS_32", "MIPS_64", "RISCV_32", "RISCV_64" |
 | "bits"                        | 64                        | int                   |
 | "count"                       | 4                         | int                   |
 | "l1_data_cache_size"          | 32768                     | int                   |
@@ -152,7 +151,7 @@ OS Support
 CPU Support
 -----
 * X86 32bit and 64bit
-* Some ARM, PPC, S390X and MIPS CPUs
+* Some ARM, PPC, S390X, MIPS and RISCV CPUs
 
 
 These approaches are used for getting info:

@@ -1,3 +1,9 @@
+python3-cpuinfo (9.0.0-1kaisen) kaisen-packages; urgency=medium
+
+  * Import the 9.0.0 version
+
+ -- Kevin Chevreuil - Kaisen <kaisen@kaisenlinux.org>  Wed, 23 Nov 2022 15:04:33 +0100
+
 python3-cpuinfo (8.0.0-2kaisen) kaisen-packages; urgency=medium
 
   * Update packaging

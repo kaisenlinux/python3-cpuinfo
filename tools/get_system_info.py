@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
 
-# Copyright (c) 2014-2021 Matthew Brennan Jones <matthew.brennan.jones@gmail.com>
-# Py-cpuinfo gets CPU info with pure Python 2 & 3
+# Copyright (c) 2014-2022 Matthew Brennan Jones <matthew.brennan.jones@gmail.com>
+# Py-cpuinfo gets CPU info with pure Python
 # It uses the MIT License
 # It is hosted at: https://github.com/workhorsy/py-cpuinfo
 #
@@ -40,7 +40,6 @@ except ImportError as err:
 	except ImportError as err:
 		pass
 
-IS_PY2 = sys.version_info[0] == 2
 is_windows = platform.system().lower() == 'windows'
 
 out_file_name = 'system_info.txt'
@@ -53,22 +52,19 @@ def run_and_get_stdout(command, pipe_command=None):
 	if not pipe_command:
 		p1 = Popen(command, stdout=PIPE, stderr=PIPE, stdin=PIPE)
 		output = p1.communicate()[0]
-		if not IS_PY2:
-			output = output.decode(encoding='UTF-8')
+		output = output.decode(encoding='UTF-8')
 		return p1.returncode, output
 	else:
 		p1 = Popen(command, stdout=PIPE, stderr=PIPE, stdin=PIPE)
 		p2 = Popen(pipe_command, stdin=p1.stdout, stdout=PIPE, stderr=PIPE)
 		p1.stdout.close()
 		output = p2.communicate()[0]
-		if not IS_PY2:
-			output = output.decode(encoding='UTF-8')
+		output = output.decode(encoding='UTF-8')
 		return p2.returncode, output
 
 def program_paths(program_name):
 	paths = []
 	exts = filter(None, os.environ.get('PATHEXT', '').split(os.pathsep))
-	path = os.environ['PATH']
 	for p in os.environ['PATH'].split(os.pathsep):
 		p = os.path.join(p, program_name)
 		if os.access(p, os.X_OK):
@@ -156,6 +152,13 @@ def parse_arch(arch_string_raw):
 	# S390X
 	elif re.match(r'^s390x$', arch_string_raw):
 		arch = 'S390X'
+		bits = 64
+	# RISCV
+	elif re.match(r'^riscv$|^riscv32$|^riscv32be$', arch_string_raw):
+		arch = 'RISCV_32'
+		bits = 32
+	elif re.match(r'^riscv64$|^riscv64be$', arch_string_raw):
+		arch = 'RISCV_64'
 		bits = 64
 
 	return (arch, bits)
@@ -648,7 +651,7 @@ def get_cpu_info_from_cpuid():
 try:
 	output = get_cpu_info_from_cpuid()
 	print_output('CPUID', output)
-except:
+except Exception:
 	pass
 
 out_file.close()
